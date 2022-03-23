@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section>
+
+        <div id="welcome-area">
+            <div class="welcome-page">
+                <h1>My Calculator</h1>
+                <p>Welcome to my calculator. Calculate your money, bank-balance & anything else.</p>
+                <a id="enter-link" class="click-link" href="#">Click Button</a>
+            </div>
+        </div>
+
+
+        <!-- Calculate area start; -->
+        <div id="calculator-area">
+            <div class="container">
+                <div class="display">
+                    <input type="text" id="input-text" placeholder="0">
+                    <button onclick="clr()">AC</button>
+                    <button onclick="del()">DEL</button>
+                    <button onclick="calculate('%')">%</button>
+                    <button onclick="calculate('/')">/</button>
+                    <button onclick="calculate(7)">7</button>
+                    <button onclick="calculate(8)">8</button>
+                    <button onclick="calculate(9)">9</button>
+                    <button onclick="calculate('*')">*</button>
+                    <button onclick="calculate(4)">4</button>
+                    <button onclick="calculate(5)">5</button>
+                    <button onclick="calculate(6)">6</button>
+                    <button onclick="calculate('-')">-</button>
+                    <button onclick="calculate(1)">1</button>
+                    <button onclick="calculate(2)">2</button>
+                    <button onclick="calculate(3)">3</button>
+                    <button onclick="calculate('+')">+</button>
+                    <button onclick="calculate('.')">.</button>
+                    <button onclick="calculate(0)">0</button>
+                    <button onclick="Result()" class="equal">=</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    
+    <script>
+
+        // welcome page area;
+        const enterBtn = document.getElementById('enter-link');
+        enterBtn.addEventListener('click', function () {
+            const welcomeArea = document.getElementById('welcome-area');
+            welcomeArea.style.display = 'none';
+            const calculatorArea = document.getElementById('calculator-area');
+            calculatorArea.style.display = 'block';
+        })
+
+
+        // calculator area;
+        let result = document.getElementById('input-text');
+
+        let calculate = (number) => {
+            result.value += number;
+        }
+
+        let Result = () => {
+            try {
+                result.value = eval(result.value);
+            } catch (error) {
+                result.value = 'Syntax error!'
+            }
+        }
+
+        // All clear button function;
+        function clr() {
+            result.value = '';
+        }
+
+        // delete button function
+        function del() {
+            result.value = result.value.slice(0, -1);
+        }
+
+    </script>
+
+</body>
+
+</html>
